@@ -6,7 +6,7 @@
 
 open class ReduceProcedure<Element, U>: TransformProcedure<AnySequence<Element>, U> {
 
-    public init<S: Sequence>(source: S, initial: U, nextPartialResult block: @escaping (U, Element) throws -> U) where S.SubSequence.Iterator.Element == Element {
+    public init<S: Sequence>(source: S, initial: U, nextPartialResult block: @escaping (U, Element) throws -> U) where S.Iterator.Element == Element {
         super.init { try $0.reduce(initial, block) }
         self.input = .ready(AnySequence(source))
         self.output = .ready(.success(initial))
