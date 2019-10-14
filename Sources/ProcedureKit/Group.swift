@@ -417,7 +417,7 @@ public extension GroupProcedure {
     }
 }
 
-public extension GroupProcedure {
+extension GroupProcedure {
 
     // MARK: - Aggregating Errors
 
@@ -449,7 +449,7 @@ public extension GroupProcedure {
 
 // MARK: - GroupProcedure Private Queue Delegate
 
-internal extension GroupProcedure {
+extension GroupProcedure {
 
     /**
      The group utilizes a GroupQueueDelegate to effectively act as its own delegate for its own
@@ -604,7 +604,7 @@ internal extension GroupProcedure {
 
 // MARK: - Finishing
 
-fileprivate extension GroupProcedure {
+extension GroupProcedure {
 
     fileprivate final class CanFinishGroup: Operation {
 
@@ -735,7 +735,7 @@ fileprivate extension GroupProcedure {
     }
 }
 
-fileprivate extension GroupProcedure {
+extension GroupProcedure {
     fileprivate func _finishGroup() {
         // Because errors have been added throughout to the (superclass) Procedure's `errors`,
         // there is no need to pass any additional errors to the call to finish().
@@ -756,7 +756,7 @@ fileprivate extension ProcedureQueue {
 
 // MARK: - Unavailable
 
-public extension GroupProcedure {
+extension GroupProcedure {
 
     @available(*, unavailable, renamed: "children")
     var operations: [Operation] { return children }

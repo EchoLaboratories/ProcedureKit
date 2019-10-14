@@ -1672,7 +1672,7 @@
 			attributes = {
 				CLASSPREFIX = PCK;
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = ProcedureKit;
 				TargetAttributes = {
 					653C9FC01D6097A40070B7A2 = {
@@ -1730,17 +1730,17 @@
 					};
 					65CFC5EF1D608A5500CAD875 = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 					};
 					65CFC5F81D608A5500CAD875 = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 					};
 					65CFC6151D60900000CAD875 = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 					};
 					65ECB2CC1DB4F0C000F96F46 = {
@@ -1757,10 +1757,11 @@
 			};
 			buildConfigurationList = 65CFC5E81D608A1A00CAD875 /* Build configuration list for PBXProject "ProcedureKit" */;
 			compatibilityVersion = "Xcode 8.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 65CFC5E41D608A1A00CAD875;
 			productRefGroup = 65CFC5F11D608A5500CAD875 /* Products */;
@@ -3446,6 +3447,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 65CFC60E1D608AE200CAD875 /* ProcedureKit.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -3457,6 +3459,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 65CFC60E1D608AE200CAD875 /* ProcedureKit.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -3498,6 +3501,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3531,6 +3535,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3580,6 +3585,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -3620,6 +3626,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -3673,6 +3680,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3721,6 +3729,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

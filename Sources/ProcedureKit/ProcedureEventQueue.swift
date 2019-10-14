@@ -88,7 +88,8 @@ public class EventQueue {
     }
 }
 
-internal extension EventQueue {
+// internal extensions
+extension EventQueue {
 
     /// Asynchronously dispatches an event for execution on the Procedure's EventQueue
     /// (optionally specifying a minimumQoS level).
@@ -204,7 +205,7 @@ internal extension EventQueue {
         }
     }
 
-    func makeTimerSource(flags: DispatchSource.TimerFlags = []) -> DispatchSourceTimer {
+    internal func makeTimerSource(flags: DispatchSource.TimerFlags = []) -> DispatchSourceTimer {
         return DispatchSource.makeTimerSource(flags: flags, queue: queue)
     }
 }
@@ -281,7 +282,7 @@ extension DispatchQueue: DispatchQueueProtocol {
 }
 
 // Swift 3.x
-fileprivate extension DispatchQueue {
+extension DispatchQueue {
     // Swift 3.x (Xcode 8.x) is missing the ability to clear specific keys from DispatchQueues
     // via DispatchQueue.setSpecific(key:value:) because it does not take an optional.
     //

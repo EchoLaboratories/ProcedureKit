@@ -63,7 +63,7 @@ internal struct ProcedureKit {
 
  - see: https://developer.apple.com/library/ios/documentation/Performance/Conceptual/EnergyGuide-iOS/PrioritizeWorkWithQoS.html#//apple_ref/doc/uid/TP40015243-CH39
  */
-@available(*, deprecated: 4.5.0, message: "Use underlying quality of service APIs instead.")
+@available(*, deprecated, message: "Use underlying quality of service APIs instead.")
 @objc public enum UserIntent: Int {
     case none = 0, sideEffect, initiated
 
@@ -186,7 +186,7 @@ open class Procedure: Operation, ProcedureProtocol {
      - requires: self must not have started yet. i.e. either hasn't been added
      to a queue, or is waiting on dependencies.
      */
-    @available(*, deprecated: 4.5.0, message: "Use underlying quality of service APIs instead.")
+    @available(*, deprecated, message: "Use underlying quality of service APIs instead.")
     public var userIntent: UserIntent = .none
 
     @available(OSX 10.10, iOS 8.0, tvOS 8.0, watchOS 2.0, *)
@@ -1354,7 +1354,7 @@ open class Procedure: Operation, ProcedureProtocol {
 
 // MARK: Dependencies
 
-public extension Procedure {
+extension Procedure {
 
     public final func add<Dependency: ProcedureProtocol>(dependency: Dependency) {
         guard let op = dependency as? Operation else {
@@ -1367,7 +1367,8 @@ public extension Procedure {
 
 // MARK: - Event Queue
 
-internal extension Procedure {
+// internal extensions
+extension Procedure {
 
     /// Asynchronously dispatches an event for execution on the Procedure's EventQueue.
     ///
@@ -1696,7 +1697,7 @@ extension Procedure {
 
 // MARK: - Internal Extensions
 
-internal extension Procedure {
+extension Procedure {
 
     // Used from GroupProcedure to aggregate errors
     internal func append(errors: [Error]) {
@@ -1712,7 +1713,7 @@ internal extension Procedure {
 
 // MARK: - Unavailable
 
-public extension Procedure {
+extension Procedure {
 
     @available(*, unavailable, renamed: "procedureDidCancel(withErrors:)", message: "procedureWillCancel is no longer available. Use procedureDidCancel.")
     public func procedureWillCancel(withErrors: [Error]) { }

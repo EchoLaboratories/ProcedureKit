@@ -129,6 +129,6 @@ public extension Operation {
      Sets the quality of service of the Operation from `UserIntent`
      - parameter userIntent: a UserIntent value
      */
-    @available(*, deprecated: 4.5.0, message: "Use underlying quality of service APIs instead.")
+    @available(*, deprecated, message: "Use underlying quality of service APIs instead.")
     func setQualityOfService(fromUserIntent userIntent: UserIntent) { }
 }

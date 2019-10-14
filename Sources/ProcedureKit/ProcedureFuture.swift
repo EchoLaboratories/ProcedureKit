@@ -149,7 +149,7 @@ public class ProcedureFuture {
 }
 
 // Used by ProcedurePromise
-fileprivate extension ProcedureFuture {
+extension ProcedureFuture {
 
     fileprivate func complete() {
         group.leave()
@@ -349,7 +349,7 @@ public class ProcedureFutureResult<Result> {
     }
 }
 
-public extension ProcedureKitError {
+extension ProcedureKitError {
     public struct UnfulfilledPromise: Error {
         internal init() { }
     }

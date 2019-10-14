@@ -72,7 +72,7 @@ public extension ConditionProtocol {
 
 // MARK: Condition Errors
 
-public extension ProcedureKitError {
+extension ProcedureKitError {
 
     public struct FailedConditions: Error {
         public let errors: [Error]
@@ -446,8 +446,8 @@ open class Condition: ConditionProtocol, Hashable {
         return lhs === rhs
     }
 
-    public var hashValue: Int {
-        return ObjectIdentifier(self).hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
     }
 
     // MARK: Internal Implementation
@@ -464,7 +464,8 @@ extension Condition {
     }
 }
 
-internal extension Condition {
+// internal extensions
+extension Condition {
     /// Set a descriptive name for the Condition.
     ///
     /// - Parameters:
@@ -1151,7 +1152,7 @@ fileprivate class ConditionResultAggregator {
     }
 }
 
-internal extension Condition {
+extension Condition {
 
     internal enum DependencyVerificationResult {
         case success
@@ -1246,7 +1247,7 @@ fileprivate class DummyDependency: Operation {
     }
 }
 
-internal extension Collection where Iterator.Element == Condition {
+extension Collection where Iterator.Element == Condition {
 
     internal var producedDependencies: Set<Operation> {
         var result = Set<Operation>()
@@ -1418,7 +1419,7 @@ internal extension Collection where Iterator.Element == Condition {
     }
 }
 
-internal extension Collection where Iterator.Element == ConditionResult {
+extension Collection where Iterator.Element == ConditionResult {
 
     // Get a single conditionResult for a collection of results
     internal var conditionResult: ConditionResult {
@@ -1479,7 +1480,7 @@ internal extension Sequence where Iterator.Element: Hashable {
 
 // MARK: - Unavailable
 
-public extension Condition {
+extension Condition {
 
     @available(*, unavailable, renamed: "addToAttachedProcedure(mutuallyExclusiveCategory:)")
     public var mutuallyExclusiveCategory: String? {

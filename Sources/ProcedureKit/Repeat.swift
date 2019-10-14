@@ -207,7 +207,7 @@ open class RepeatProcedure<T: Operation>: GroupProcedure {
         assert(!isFinished, "Cannot add next operation after the procedure has finished.")
         let promise = ProcedurePromiseResult<Bool>()
         dispatchEvent {
-            let result = self._addNextOperation(shouldAddNext)
+            let result = self._addNextOperation(shouldAddNext())
             promise.complete(withResult: result)
         }
         return promise.future
@@ -545,7 +545,7 @@ public struct IntervalIterator {
     }
 }
 
-public extension Delay {
+extension Delay {
 
     public static func iterator(_ iterator: AnyIterator<TimeInterval>) -> AnyIterator<Delay> {
         return AnyIterator(MapIterator(iterator) { Delay.by($0) })

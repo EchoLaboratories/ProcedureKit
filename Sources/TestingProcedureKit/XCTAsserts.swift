@@ -66,7 +66,7 @@ internal func __XCTEvaluateAssertion(testCase: XCTestCase, _ message: @autoclosu
 public extension ProcedureKitTestCase {
 
     func XCTAssertProcedureFinishedWithoutErrors<T: ProcedureProtocol>(_ exp: @autoclosure () throws -> T, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-        __XCTEvaluateAssertion(testCase: self, message, file: file, line: line) {
+        __XCTEvaluateAssertion(testCase: self, message(), file: file, line: line) {
             let procedure = try exp()
             guard !procedure.failed else {
                 return .expectedFailure("\(procedure.procedureName) has failed with errors: \"\(procedure.errors)\".")
@@ -82,7 +82,7 @@ public extension ProcedureKitTestCase {
     }
 
     func XCTAssertProcedureFinishedWithErrors<T: ProcedureProtocol>(_ exp: @autoclosure () throws -> T, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-        __XCTEvaluateAssertion(testCase: self, message, file: file, line: line) {
+        __XCTEvaluateAssertion(testCase: self, message(), file: file, line: line) {
             let procedure = try exp()
             guard procedure.failed else {
                 return .expectedFailure("\(procedure.procedureName) did not have any errors.")
@@ -98,7 +98,7 @@ public extension ProcedureKitTestCase {
     }
 
     func XCTAssertProcedureFinishedWithErrors<T: ProcedureProtocol>(_ exp1: @autoclosure () throws -> T, count exp2: @autoclosure () throws -> Int, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-        __XCTEvaluateAssertion(testCase: self, message, file: file, line: line) {
+        __XCTEvaluateAssertion(testCase: self, message(), file: file, line: line) {
             let procedure = try exp1()
             let count = try exp2()
             guard procedure.failed else {
@@ -118,7 +118,7 @@ public extension ProcedureKitTestCase {
     }
 
     func XCTAssertProcedureCancelledWithoutErrors<T: ProcedureProtocol>(_ exp: @autoclosure () throws -> T, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-        __XCTEvaluateAssertion(testCase: self, message, file: file, line: line) {
+        __XCTEvaluateAssertion(testCase: self, message(), file: file, line: line) {
             let procedure = try exp()
             guard !procedure.failed else {
                 return .expectedFailure("\(procedure.procedureName) has failed with errors: \"\(procedure.errors)\".")
@@ -134,7 +134,7 @@ public extension ProcedureKitTestCase {
     }
 
     func XCTAssertProcedureCancelledWithErrors<T: ProcedureProtocol>(_ exp: @autoclosure () throws -> T, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-        __XCTEvaluateAssertion(testCase: self, message, file: file, line: line) {
+        __XCTEvaluateAssertion(testCase: self, message(), file: file, line: line) {
             let procedure = try exp()
             guard procedure.failed else {
                 return .expectedFailure("\(procedure.procedureName) did not have any errors.")
@@ -150,7 +150,7 @@ public extension ProcedureKitTestCase {
     }
 
     func XCTAssertProcedureCancelledWithErrors<T: ProcedureProtocol>(_ exp: @autoclosure () throws -> T, count exp2: @autoclosure () throws -> Int, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-        __XCTEvaluateAssertion(testCase: self, message, file: file, line: line) {
+        __XCTEvaluateAssertion(testCase: self, message(), file: file, line: line) {
             let procedure = try exp()
             let count = try exp2()
             guard procedure.failed else {
@@ -169,8 +169,8 @@ public extension ProcedureKitTestCase {
         }
     }
 
-    public func XCTAssertConditionResult<E: Error>(_ exp1: @autoclosure () throws -> ConditionResult, failedWithError error: @autoclosure () throws -> E, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) where E: Equatable {
-        __XCTEvaluateAssertion(testCase: self, message, file: file, line: line) {
+    func XCTAssertConditionResult<E: Error>(_ exp1: @autoclosure () throws -> ConditionResult, failedWithError error: @autoclosure () throws -> E, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) where E: Equatable {
+        __XCTEvaluateAssertion(testCase: self, message(), file: file, line: line) {
 
             let result = try exp1()
             let expectedError = try error()
@@ -190,8 +190,8 @@ public extension ProcedureKitTestCase {
         }
     }
 
-    public func XCTAssertConditionResultSatisfied(_ exp1: @autoclosure () throws -> ConditionResult, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-        __XCTEvaluateAssertion(testCase: self, message, file: file, line: line) {
+    func XCTAssertConditionResultSatisfied(_ exp1: @autoclosure () throws -> ConditionResult, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
+        __XCTEvaluateAssertion(testCase: self, message(), file: file, line: line) {
 
             let result = try exp1()
 
@@ -204,8 +204,8 @@ public extension ProcedureKitTestCase {
         }
     }
 
-    public func XCTAssertProcedure<T: ProcedureProtocol, E: Error>(_ exp: @autoclosure () throws -> T, firstErrorEquals firstError: E, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) where E: Equatable {
-        __XCTEvaluateAssertion(testCase: self, message, file: file, line: line) {
+    func XCTAssertProcedure<T: ProcedureProtocol, E: Error>(_ exp: @autoclosure () throws -> T, firstErrorEquals firstError: E, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) where E: Equatable {
+        __XCTEvaluateAssertion(testCase: self, message(), file: file, line: line) {
             let procedure = try exp()
             guard procedure.failed else {
                 return .expectedFailure("\(procedure.procedureName) did not have any errors.")
@@ -223,7 +223,7 @@ public extension ProcedureKitTestCase {
 public extension ProcedureKitTestCase {
 
     func XCTAssertProcedureFinishedWithoutErrors<T>(_ exp: @autoclosure () throws -> T, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) where T: TestProcedure {
-        __XCTEvaluateAssertion(testCase: self, message, file: file, line: line) {
+        __XCTEvaluateAssertion(testCase: self, message(), file: file, line: line) {
             let procedure = try exp()
             guard !procedure.failed else {
                 return .expectedFailure("\(procedure.procedureName) has failed with errors: \"\(procedure.errors)\".")
@@ -242,7 +242,7 @@ public extension ProcedureKitTestCase {
     }
 
     func XCTAssertProcedureCancelledWithoutErrors<T>(_ exp: @autoclosure () throws -> T, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) where T: TestProcedure {
-        __XCTEvaluateAssertion(testCase: self, message, file: file, line: line) {
+        __XCTEvaluateAssertion(testCase: self, message(), file: file, line: line) {
             let procedure = try exp()
             guard !procedure.failed else {
                 return .expectedFailure("\(procedure.procedureName) has failed with errors: \"\(procedure.errors)\".")
@@ -265,27 +265,27 @@ public extension ProcedureKitTestCase {
 public extension ProcedureKitTestCase {
 
     func XCTAssertProcedureFinishedWithoutErrors(_ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-        XCTAssertProcedureFinishedWithoutErrors(procedure, message, file: file, line: line)
+        XCTAssertProcedureFinishedWithoutErrors(procedure, message(), file: file, line: line)
     }
 
     func XCTAssertProcedureFinishedWithErrors(_ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-        XCTAssertProcedureFinishedWithErrors(procedure, message, file: file, line: line)
+        XCTAssertProcedureFinishedWithErrors(procedure, message(), file: file, line: line)
     }
 
     func XCTAssertProcedureFinishedWithErrors(count: @autoclosure () throws -> Int, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-        XCTAssertProcedureFinishedWithErrors(procedure, count: count, message, file: file, line: line)
+        XCTAssertProcedureFinishedWithErrors(procedure, count: try count(), message(), file: file, line: line)
     }
 
     func XCTAssertProcedureCancelledWithoutErrors(_ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-        XCTAssertProcedureCancelledWithoutErrors(procedure, message, file: file, line: line)
+        XCTAssertProcedureCancelledWithoutErrors(procedure, message(), file: file, line: line)
     }
 
     func XCTAssertProcedureCancelledWithErrors(_ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-        XCTAssertProcedureCancelledWithErrors(procedure, message, file: file, line: line)
+        XCTAssertProcedureCancelledWithErrors(procedure, message(), file: file, line: line)
     }
 
     func XCTAssertProcedureCancelledWithErrors(count: @autoclosure () throws -> Int, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-        XCTAssertProcedureCancelledWithErrors(procedure, count: count, message, file: file, line: line)
+        XCTAssertProcedureCancelledWithErrors(procedure, count: try count(), message(), file: file, line: line)
     }
 }
 
@@ -294,7 +294,7 @@ public extension ProcedureKitTestCase {
 public extension ProcedureKitTestCase {
 
     func XCTAssertProcedureNoConcurrentEvents<T: EventConcurrencyTrackingProcedureProtocol>(_ exp: @autoclosure () throws -> T, minimumConcurrentDetected: Int = 1, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) where T: Procedure {
-        __XCTEvaluateAssertion(testCase: self, message, file: file, line: line) {
+        __XCTEvaluateAssertion(testCase: self, message(), file: file, line: line) {
             let procedure = try exp()
             let detectedConcurrentEvents = procedure.concurrencyRegistrar.detectedConcurrentEvents
             guard procedure.concurrencyRegistrar.maximumDetected >= minimumConcurrentDetected && detectedConcurrentEvents.isEmpty else {
